@@ -253,6 +253,8 @@ MemoryPeimInitialization (
   UINT64                      CurSize;
   UINT64                      LowestMemBase;
   UINT64                      LowestMemSize;
+  UINT64                      ReservedStart;
+  UINT64                      ReservedSize;
   INT32                       Node;
   INT32                       Prev;
   INT32                       Len;
@@ -260,6 +262,8 @@ MemoryPeimInitialization (
   UefiMemoryBase = (UINT64)FixedPcdGet32 (PcdTemporaryRamBase) + FixedPcdGet32 (PcdTemporaryRamSize) - SIZE_32MB;
   LowestMemBase = 0;
   LowestMemSize = 0;
+  ReservedStart = 0xc0000000;
+  ReservedSize  = 0x40000000;
 
   // Look for the lowest memory node
   for (Prev = 0; ; Prev = Node) {
@@ -288,7 +292,7 @@ MemoryPeimInitialization (
 
         if ((LowestMemBase == 0) || (CurBase <= LowestMemBase)) {
           LowestMemBase = CurBase;
-          LowestMemSize = CurSize;
+          LowestMemSize += CurSize;
         }
 
       } else {
@@ -311,10 +315,16 @@ MemoryPeimInitialization (
     "%a: Total System RAM @ 0x%lx - 0x%lx\n",
     __func__,
     LowestMemBase,
-    LowestMemBase + LowestMemSize - 1
+    LowestMemBase + LowestMemSize + ReservedSize - 1
     ));
 
-  InitializeRamRegions (LowestMemBase, LowestMemSize);
+  InitializeRamRegions (LowestMemBase, LowestMemSize + ReservedSize);
+
+  BuildMemoryAllocationHob (
+    ReservedStart,
+    ReservedSize,
+    EfiReservedMemoryType
+  );
 
   AddReservedMemoryMap (DeviceTreeAddress);
 
