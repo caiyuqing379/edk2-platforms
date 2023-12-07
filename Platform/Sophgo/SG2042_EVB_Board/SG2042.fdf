@@ -115,6 +115,14 @@ INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
 !endif
 
 #
+# ACPI Support
+#
+INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
+INF Silicon/Sophgo/SG2042Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.inf
+INF MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
+INF RuleOverride=ACPITABLE Silicon/Sophgo/SG2042Pkg/AcpiTables/SGX8EvbAcpiTables.inf
+
+#
 # SMBIOS Support
 #
 INF  MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
