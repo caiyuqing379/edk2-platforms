@@ -364,12 +364,12 @@ typedef struct {
 #pragma pack ()
 
 // EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE
-#define EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE_INIT(                                         \
-    ProximityDomain, AddressBaseLow, AddressBaseHigh, LengthLow, LengthHigh, Flags)          \
-  {                                                                                          \
-    EFI_ACPI_6_5_MEMORY_AFFINITY, sizeof (EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE),           \
-    ProximityDomain, EFI_ACPI_RESERVED_WORD, AddressBaseLow, AddressBaseHigh,                \
-    LengthLow, LengthHigh, EFI_ACPI_RESERVED_DWORD, Flags, EFI_ACPI_RESERVED_QWORD           \
+#define EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE_INIT(                                    \
+    ProximityDomain, AddressBaseLow, AddressBaseHigh, LengthLow, LengthHigh, Flags)     \
+  {                                                                                     \
+    EFI_ACPI_6_5_MEMORY_AFFINITY, sizeof (EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE),      \
+    ProximityDomain, EFI_ACPI_RESERVED_WORD, AddressBaseLow, AddressBaseHigh,           \
+    LengthLow, LengthHigh, EFI_ACPI_RESERVED_DWORD, Flags, EFI_ACPI_RESERVED_QWORD      \
   }
 
 // EFI_ACPI_6_5_APIC_SAPIC_AFFINITY_STRUCTURE
@@ -444,7 +444,7 @@ typedef struct {
     /* Guaranteed Performance Register */                                      \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },               \
     /* Desired Performance Register */                                         \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, DesiredPerfReg, 4) },  \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, DesiredPerfReg, 4) },     \
     /* Minimum Performance Register */                                         \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },               \
     /* Maximum Performance Register */                                         \
@@ -452,15 +452,15 @@ typedef struct {
     /* Performance Reduction Tolerance Register */                             \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },               \
     /* Time Window Register */                                                 \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x1000000000000009, 4) },               \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x1000000000000009, 4) }, \
     /* Counter Wraparound Time */                                              \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },               \
     /* Reference Performance Counter Register */                               \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x2000000000000C01, 4) },                  \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x2000000000000C01, 4) }, \
     /* Delivered Performance Counter Register */                               \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x100000000000000C, 4) },                  \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, 0x100000000000000C, 4) }, \
     /* Performance Limited Register */                                         \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, PerfLimitedReg, 4) }, \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, PerfLimitedReg, 4) },     \
     /* CPPC Enable Register */                                                 \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },               \
     /* Autonomous Selection Enable Register */                                 \
@@ -496,7 +496,7 @@ typedef struct {
     ResidencyCounterFreq,               /* Residency Counter Frequency */             \
     EnabledParentState,                 /* Enabled Parent State */                    \
     /* Entry Method */                                                                \
-    ResourceTemplate () { Register (FFixedHW, 64, 0, EntryMethodReg, 4) },        \
+    ResourceTemplate () { Register (FFixedHW, 64, 0, EntryMethodReg, 4) },            \
     /* Residency Counter Register */                                                  \
     ResourceTemplate () { Register (SystemMemory, 0, 0, 0, 0) },                      \
     /* Usage Counter Register */                                                      \

@@ -11,10 +11,9 @@
 Scope(_SB)
 {
   // GPIO
-  Device(GPO0) {
+  Device (GPI0) {
     Name(_HID, "SG200010")
     Name(_CID, "HISI0181")
-    Name(_ADR, 0)
     Name(_UID, 0)
 
     Name (_CRS, ResourceTemplate ()  {
@@ -34,7 +33,7 @@ Scope(_SB)
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 96 }
     })
 
-    Device(PRTa) {
+    Device (PRTA) {
       Name(_ADR, 0)
       Name(_UID, 0)
       Name(_DSD, Package () {
@@ -48,10 +47,9 @@ Scope(_SB)
     }
   }
 
-  Device(GPO1) {
+  Device (GPI1) {
     Name(_HID, "SG200010")
     Name(_CID, "HISI0181")
-    Name(_ADR, 0)
     Name(_UID, 1)
 
     Name (_CRS, ResourceTemplate ()  {
@@ -71,7 +69,7 @@ Scope(_SB)
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 97 }
     })
 
-    Device(PRTa) {
+    Device (PRTA) {
       Name(_ADR, 0)
       Name(_UID, 0)
       Name(_DSD, Package () {
@@ -85,10 +83,9 @@ Scope(_SB)
     }
   }
 
-  Device(GPO2) {
+  Device (GPI2) {
     Name(_HID, "SG200010")
     Name(_CID, "HISI0181")
-    Name(_ADR, 0)
     Name(_UID, 2)
 
     Name (_CRS, ResourceTemplate ()  {
@@ -108,7 +105,7 @@ Scope(_SB)
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 98 }
     })
 
-    Device(PRTa) {
+    Device (PRTA) {
       Name(_ADR, 0)
       Name(_UID, 0)
       Name(_DSD, Package () {
@@ -122,8 +119,42 @@ Scope(_SB)
     }
   }
 
-  //  I2C for 100k release
-  Device(I2C0) {
+  Device (SCTL) {
+    Name(_HID, "SG200020")
+    Name(_CRS, ResourceTemplate() {
+      QWordMemory (
+        ResourceConsumer,
+        ,
+        MinFixed,
+        MaxFixed,
+        NonCacheable,
+        ReadWrite,
+        0x0,
+        0x7030010000,
+        0x7030017FFF,
+        0x0,
+        0x8000
+      )
+    })
+  }
+
+  Device (PCTL) {
+    Name(_HID, "SG200021")
+    Name(_CRS, ResourceTemplate() {
+      Memory32Fixed(ReadWrite, 0x50010400, 0x7000)
+    })
+
+    Name (_DSD, Package () {
+      ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+      Package () {
+        Package () { "subctrl-syscon", Package() { \_SB.SCTL } },
+        Package () { "top_pinctl_offset", 0x1000 },
+      }
+    })
+  }
+
+  // I2C for 100k
+  Device (I2C0) {
     Name(_HID, "SG200011")
     Name(_CID, "HISI02A2")
     Name(_UID, 0)
@@ -133,7 +164,6 @@ Scope(_SB)
         Package () {"clock-frequency", 100000},
       }
     })
-
     Name (_CRS, ResourceTemplate ()  {
       QWordMemory (
         ResourceConsumer,
@@ -150,9 +180,11 @@ Scope(_SB)
       )
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 101 }
     })
+    Name(SSCN, Package() { 0x3E2, 0x47D, 0 })
+    Name(FMCN, Package() { 0xA4, 0x13F, 0 })
   }
 
-  Device(I2C1) {
+  Device (I2C1) {
     Name(_HID, "SG200011")
     Name(_CID, "HISI02A2")
     Name(_UID, 1)
@@ -162,7 +194,6 @@ Scope(_SB)
         Package () {"clock-frequency", 100000},
       }
     })
-
     Name (_CRS, ResourceTemplate ()  {
       QWordMemory (
         ResourceConsumer,
@@ -179,9 +210,11 @@ Scope(_SB)
       )
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 102 }
     })
+    Name(SSCN, Package() { 0x3E2, 0x47D, 0 })
+    Name(FMCN, Package() { 0xA4, 0x13F, 0 })
   }
 
-  Device(I2C2) {
+  Device (I2C2) {
     Name(_HID, "SG200011")
     Name(_CID, "HISI02A2")
     Name(_UID, 2)
@@ -191,7 +224,6 @@ Scope(_SB)
         Package () {"clock-frequency", 100000},
       }
     })
-
     Name (_CRS, ResourceTemplate ()  {
       QWordMemory (
         ResourceConsumer,
@@ -208,9 +240,11 @@ Scope(_SB)
       )
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 103 }
     })
+    Name(SSCN, Package() { 0x3E2, 0x47D, 0 })
+    Name(FMCN, Package() { 0xA4, 0x13F, 0 })
   }
 
-  Device(I2C3) {
+  Device (I2C3) {
     Name(_HID, "SG200011")
     Name(_CID, "HISI02A2")
     Name(_UID, 3)
@@ -220,7 +254,6 @@ Scope(_SB)
         Package () {"clock-frequency", 100000},
       }
     })
-
     Name (_CRS, ResourceTemplate ()  {
       QWordMemory (
         ResourceConsumer,
@@ -237,9 +270,11 @@ Scope(_SB)
       )
       Interrupt(ResourceConsumer, Level, ActiveHigh, Exclusive,,,) { 104 }
     })
+    Name(SSCN, Package() { 0x3E2, 0x47D, 0 })
+    Name(FMCN, Package() { 0xA4, 0x13F, 0 })
   }
 
-  // PWM Driver
+  // PWM
   Device (PWM0) {
     Name (_HID, "SG200005")
     Name (_UID, 0)

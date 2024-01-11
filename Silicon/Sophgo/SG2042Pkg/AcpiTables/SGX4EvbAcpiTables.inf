@@ -23,7 +23,7 @@
   Madt.aslc
   Pptt.aslc
   Rhct.aslc
-  Dsdt/Dsdt.asl
+  Dsdt/SGX4EvbDsdt.asl
 
 [Packages]
   EmbeddedPkg/EmbeddedPkg.dec

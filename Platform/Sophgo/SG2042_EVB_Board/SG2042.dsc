@@ -571,4 +571,4 @@
   MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   Silicon/Sophgo/SG2042Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.inf
   MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
-  Silicon/Sophgo/SG2042Pkg/AcpiTables/SGX8EvbAcpiTables.inf
+  Silicon/Sophgo/SG2042Pkg/AcpiTables/SGX4EvbAcpiTables.inf

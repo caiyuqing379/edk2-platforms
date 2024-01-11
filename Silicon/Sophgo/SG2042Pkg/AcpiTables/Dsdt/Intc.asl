@@ -1,8 +1,7 @@
 /** @file
   Differentiated System Description Table Fields (DSDT)
 
-  Copyright (c) 2014, ARM Ltd. All rights reserved.<BR>
-    SPDX-License-Identifier: BSD-2-Clause-Patent
+  Copyright (c) 2023, Academy of Intelligent Innovation, Shandong Universiy, China.P.R. All rights reserved.<BR>
 
 **/
 

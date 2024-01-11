@@ -37,7 +37,6 @@ Scope(_SB)
     Name (_DSD, Package () {
       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
-            // Package () { "clock-frequency", 400000 },
             Package () { "non-removable", 0x1 },
             Package () { "bus-width", 4 },
             Package () { "no-sd", 0x1 },
@@ -72,7 +71,6 @@ Scope(_SB)
     Name (_DSD, Package () {
       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
-            // Package () { "clock-frequency", 400000 },
             Package () { "bus-width", 4 },
             Package () { "no-mmc", 0x1 },
             Package () { "no-sdio", 0x1  },
